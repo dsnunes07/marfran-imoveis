@@ -1,0 +1,4 @@
+<% @admins.each do |admin| %>
+  <li><%= admin.email %></li>
+<% end %>
+<%= link_to "Encerrar sessão", destroy_admin_session_path, method: :delete	%>
