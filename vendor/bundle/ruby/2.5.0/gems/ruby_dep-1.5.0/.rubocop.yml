@@ -1,3 +1,3 @@
-Style/Documentation:
-  Description: Document classes and non-namespace modules.
-  Enabled: false
+# Style/Documentation:
+#   Description: Document classes and non-namespace modules.
+#   Enabled: false

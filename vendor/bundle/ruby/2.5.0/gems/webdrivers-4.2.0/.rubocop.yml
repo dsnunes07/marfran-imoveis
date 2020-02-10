@@ -37,8 +37,8 @@ Metrics/AbcSize:
   Exclude:
     - 'lib/webdrivers/chromedriver.rb'
 
-Style/Documentation:
-  Enabled: false
+# Style/Documentation:
+#   Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
