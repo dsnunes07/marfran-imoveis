@@ -12,5 +12,23 @@
   <%= form.check_box :showing, checked: @real_estate.showing? %>
   <%= form.label :showing, 'Mostrar esse imóvel no site?' %>
   <br />
+  <% @real_estate.images.each do |image| %>
+    <div id="<%= image.id %>">
+      <%= image_tag(image.variant(resize_to_limit: [350,400])) %>
+      <br>
+      <input type="button" onclick="deletePhoto(<%= image.id %>)" value="Apagar">
+    </div>
+  <% end %>
+  <%= form.hidden_field :deleted_values %>
   <%= form.submit "Salvar" %>
 <% end %>
+
+<script>
+  var deleted_images = []
+  function deletePhoto(id) {
+    var element = document.getElementById(id)
+    element.parentNode.removeChild(element)
+    deleted_images.push(id)
+    document.getElementById('real_estate_deleted_values').value = deleted_images
+  }
+</script>
