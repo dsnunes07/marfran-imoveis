@@ -1,0 +1,25 @@
+<h1>Imóveis cadastrados</h1>
+<table>
+  <thead>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th>Número de cômodos</th>
+    <th>Mostra no site?</th>
+    <th>Ações</th>
+  </thead>
+  <tbody>
+    <% @real_estates.each do |real_estate| %>
+      <tr>
+        <td><%= real_estate.name %></td>
+        <td><%= RealEstate.types.key(real_estate.real_estate_type) %></td>
+        <td><%= real_estate.rooms %></td>
+        <td><%= real_estate.showing %></td>
+        <td>
+          <%= link_to 'Editar', edit_real_estate_path(real_estate) %>
+          <br>
+          <%= link_to 'Remover', real_estate_path(real_estate.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
