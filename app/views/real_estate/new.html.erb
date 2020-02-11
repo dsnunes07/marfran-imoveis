@@ -12,5 +12,8 @@
   <%= form.check_box :showing, checked: true %>
   <%= form.label :showing, 'Mostrar esse imóvel no site?' %>
   <br />
+  <%= form.label :images, 'Adicionar fotos'%>
+  <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
+  <br />
   <%= form.submit "Salvar" %>
 <% end %>

@@ -1,10 +1,15 @@
 class RealEstateController < ApplicationController
+  layout 'admins'
   def index
     @real_estates = RealEstate.all
   end
 
   def new
     @real_estate = RealEstate.new
+  end
+
+  def show
+    @real_estate = RealEstate.find(params[:id])
   end
 
   def create
@@ -22,6 +27,8 @@ class RealEstateController < ApplicationController
   end
 
   def update
+    attachments_id_to_delete = params[:real_estate][:deleted_values].split(',').map(&:to_i)
+    ActiveStorage::Attachment.find(attachments_id_to_delete).map(&:purge)
     RealEstate.update(params[:id], real_estate_params)
     redirect_to list_real_estate_path
   end
@@ -32,6 +39,6 @@ class RealEstateController < ApplicationController
   end
 
   def real_estate_params
-    params.require(:real_estate).permit(:name, :real_estate_type, :rooms, :showing)
+    params.require(:real_estate).permit(:name, :real_estate_type, :rooms, :showing, images: [])
   end
 end

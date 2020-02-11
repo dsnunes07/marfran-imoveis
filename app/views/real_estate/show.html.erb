@@ -1,0 +1,8 @@
+<p><%= @real_estate.name %></p>
+<p><%= @real_estate.real_estate_type %></p>
+<p><%= @real_estate.rooms %></p>
+<p><%= @real_estate.showing %></p>
+
+<% @real_estate.images.each do |image| %>
+  <%= image_tag(image.variant(resize_to_limit: [350,400])) %>
+<% end %>

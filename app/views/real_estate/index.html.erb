@@ -18,6 +18,8 @@
           <%= link_to 'Editar', edit_real_estate_path(real_estate) %>
           <br>
           <%= link_to 'Remover', real_estate_path(real_estate.id), method: :delete %>
+          <br>
+          <%= link_to 'Ver detalhes', show_real_estate_path(real_estate.id) %>
         </td>
       </tr>
     <% end %>
