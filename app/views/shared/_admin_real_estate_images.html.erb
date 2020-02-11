@@ -1,0 +1,20 @@
+<div id="<%= image.id %>">
+  <div class="image-container">
+    <div class="image-preview">
+      <%= image_tag(image.variant(resize_to_limit: [300,200])) %>
+    </div>
+    <div class="buttons-container">
+      <input type="button" onclick="deletePhoto(<%= image.id %>)" value="Apagar">
+    </div>
+  </div>
+</div>
+
+<script>
+  var deleted_images = []
+  function deletePhoto(id) {
+    var element = document.getElementById(id)
+    element.parentNode.removeChild(element)
+    deleted_images.push(id)
+    document.getElementById('real_estate_deleted_values').value = deleted_images
+  }
+</script>

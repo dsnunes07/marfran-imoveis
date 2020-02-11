@@ -1,0 +1,19 @@
+<div id="header-container">
+  <div id="logo-container">
+    <p>MARFRAN IMÓVEIS</p>
+  </div>
+  <ul>
+    <li>
+      <%= link_to "Início", admins_path, method: :get %>
+    </li>
+    <li>
+      <%= link_to "Adicionar novo imóvel", new_real_estate_path, method: :get %>
+    </li>
+    <li>
+      <%= link_to "Ver imóveis cadastrados", list_real_estate_path %>
+    </li>
+    <li>
+      <%= link_to "Sair", destroy_admin_session_path, method: :delete	%>
+    </li>
+  </ul>
+</div>
