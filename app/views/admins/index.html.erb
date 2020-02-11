@@ -1,4 +1,3 @@
-<% @admins.each do |admin| %>
-  <li><%= admin.email %></li>
-<% end %>
+<%= link_to "Adicionar novo imóvel", new_real_estate_path, method: :get %>
+<%= link_to "Ver imóveis cadastrados", list_real_estate_path %>
 <%= link_to "Encerrar sessão", destroy_admin_session_path, method: :delete	%>

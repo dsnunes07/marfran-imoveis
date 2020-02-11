@@ -1,0 +1,16 @@
+<h1>Editar imóvel</h1>
+<%= form_with model: @real_estate, url: real_estate_path, method: :patch do |form| %>
+  <%= form.label :name, 'Nome do imóvel' %>
+  <%= form.text_field :name %>
+  <br />
+  <%= form.label :real_estate_type, 'Tipo do imóvel' %>
+  <%= form.select(:real_estate_type, options_for_select(RealEstate.types)) %>
+  <br />
+  <%= form.label :rooms, 'Número de cômodos' %>
+  <%= form.number_field(:rooms, min: 1) %>
+  <br />
+  <%= form.check_box :showing, checked: @real_estate.showing? %>
+  <%= form.label :showing, 'Mostrar esse imóvel no site?' %>
+  <br />
+  <%= form.submit "Salvar" %>
+<% end %>
