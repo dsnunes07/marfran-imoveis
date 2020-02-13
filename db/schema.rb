@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_11_015232) do
+ActiveRecord::Schema.define(version: 2020_02_13_175511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_02_11_015232) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "street", null: false
+    t.string "number", null: false
+    t.string "cep"
+    t.string "city"
+    t.string "state"
+  end
+
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
@@ -53,6 +61,13 @@ ActiveRecord::Schema.define(version: 2020_02_11_015232) do
     t.string "name", null: false
     t.integer "rooms"
     t.boolean "showing", default: true, null: false
+    t.decimal "rent_price", precision: 13, scale: 2
+    t.decimal "sell_price", precision: 13, scale: 2
+    t.text "description"
+    t.boolean "selling", default: false, null: false
+    t.boolean "renting", default: false, null: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_real_estates_on_address_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
