@@ -1,34 +1,50 @@
 <h1>Editar imóvel</h1>
 <%= form_with model: @real_estate, url: real_estate_path, method: :patch do |form| %>
-  <%= form.label :name, 'Nome do imóvel' %>
-  <%= form.text_field :name %>
-  <br />
-  <%= form.label :real_estate_type, 'Tipo do imóvel' %>
-  <%= form.select(:real_estate_type, options_for_select(RealEstate.types)) %>
-  <br />
-  <%= form.label :rooms, 'Número de cômodos' %>
-  <%= form.number_field(:rooms, min: 1) %>
-  <br />
+  <div class="row">
+    <%= form.label :name, 'Nome do imóvel', id: "form-label" %>
+  </div>
+  <div class="row">
+    <%= form.text_field :name, id: "form-input" %>
+  </div>
+  <div class="row">
+    <%= form.label :real_estate_type, 'Tipo do imóvel', id: "form-label" %>
+  </div>
+  <div class="row">
+    <%= form.select(:real_estate_type, options_for_select(RealEstate.types)) %>
+  </div>
+  <div class="row">
+    <%= form.label :rooms, 'Número de cômodos', id: "form-label" %>
+  </div>
+  <div class="row">
+    <%= form.number_field :rooms, min: 1, id: "form-input" %>
+  </div>
+  <div class="row">
   <%= form.check_box :showing, checked: @real_estate.showing? %>
-  <%= form.label :showing, 'Mostrar esse imóvel no site?' %>
-  <br />
-  <% @real_estate.images.each do |image| %>
-    <div id="<%= image.id %>">
-      <%= image_tag(image.variant(resize_to_limit: [350,400])) %>
+  <%= form.label :showing, 'Mostrar esse imóvel no site?', id: "form-label" %>
+  </div>
+  <hr>
+  <h1>Gerenciar imagens do imóvel</h1>
+  <div class="row">
+    <%= form.label :images, 'Adicionar novas imagens', id: "form-label"%>
+  </div>
+  <div class="row">
+    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
+  </div>
+  <% if @real_estate.images.any? %>
+    <div class="row">
+      <hr>
+      <label id="form-label">Imagens já adicionadas</label>
       <br>
-      <input type="button" onclick="deletePhoto(<%= image.id %>)" value="Apagar">
+    </div>
+    <%= form.hidden_field :deleted_values %>
+    <div id="image-cards-container">
+      <% @real_estate.images.each do |image| %>
+        <%= render partial: 'shared/admin_real_estate_images', locals: {image: image, form: form} %>
+      <% end %>
     </div>
   <% end %>
-  <%= form.hidden_field :deleted_values %>
-  <%= form.submit "Salvar" %>
+  <div class="row">
+    <%= form.submit "Salvar" %>
+    <%= link_to 'Voltar', admins_path %>
+  </div>
 <% end %>
-
-<script>
-  var deleted_images = []
-  function deletePhoto(id) {
-    var element = document.getElementById(id)
-    element.parentNode.removeChild(element)
-    deleted_images.push(id)
-    document.getElementById('real_estate_deleted_values').value = deleted_images
-  }
-</script>
