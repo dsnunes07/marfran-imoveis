@@ -11,20 +11,20 @@ html,body {
   height: 100%;
 }
 
-#header-container {
+#admins-header {
   background-color: $header-color;
   width: 100%;
   padding: 2px;
 }
 
-#logo-container {
+#admins-logo-container {
   width: 100%;
   float: left;
   text-align: center;
   margin-bottom: 0;
 }
 
-#logo-container p {
+#admins-logo-container p {
   width: 100%;
   color: $header-logo-font-color;
   font-family: 'Times New Roman', Times, serif;
@@ -32,7 +32,7 @@ html,body {
   margin: 0;
 }
 
-#header-container ul {
+#admins-header ul {
   width: 100%;
   text-align: center;
   padding: 0px;
@@ -41,13 +41,13 @@ html,body {
   vertical-align:top;
 }
 
-#header-container li {
+#admins-header li {
   list-style-type: none;
   padding: 0px;
   display: inline;
 }
 
-#header-container li a {
+#admins-header li a {
   color: black;
   font-size: 16px;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
