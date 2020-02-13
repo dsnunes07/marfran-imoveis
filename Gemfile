@@ -55,4 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'image_processing'
+gem 'materialize-sass'
 gem 'pry', '~> 0.12.2'
