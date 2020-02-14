@@ -55,5 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'image_processing'
+gem 'jquery-rails'
+gem 'jquery_mask_rails', '~> 0.1.0'
+gem 'material_icons'
 gem 'materialize-sass'
 gem 'pry', '~> 0.12.2'
