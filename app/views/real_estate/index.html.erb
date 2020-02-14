@@ -1,27 +1,15 @@
-<h1>Imóveis cadastrados</h1>
-<table>
-  <thead>
-    <th>Nome</th>
-    <th>Tipo</th>
-    <th>Número de cômodos</th>
-    <th>Mostra no site?</th>
-    <th>Ações</th>
-  </thead>
-  <tbody>
-    <% @real_estates.each do |real_estate| %>
-      <tr>
-        <td><%= real_estate.name %></td>
-        <td><%= RealEstate.types.key(real_estate.real_estate_type) %></td>
-        <td><%= real_estate.rooms %></td>
-        <td><%= real_estate.showing %></td>
-        <td>
-          <%= link_to 'Editar', edit_real_estate_path(real_estate) %>
-          <br>
-          <%= link_to 'Remover', real_estate_path(real_estate.id), method: :delete %>
-          <br>
-          <%= link_to 'Ver detalhes', show_real_estate_path(real_estate.id) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <h3>Imóveis cadastrados</h3>
+</div>
+<% count = 0 %>
+<% @real_estates.each do |real_estate| %>
+  <% if count == 0 %>
+    <div class="row">
+  <% elsif count % 3 == 0 %>
+    </div>
+    <div class="row">
+  <% end %>
+  <%= render partial: 'shared/admin_real_estate_card', locals: {real_estate: real_estate} %>
+<% end %>
+</div>
+<%= paginate @real_estates %>

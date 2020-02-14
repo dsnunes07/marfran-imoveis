@@ -8,7 +8,7 @@
       <label for="real-estate-name" class="active">Nome do imóvel</label>
     </div>
     <div class="input-field col s4">
-      <%= form.select :real_estate_type, options_for_select(RealEstate.types), id: 'real_estate_type' %>
+      <%= form.select :real_estate_type, RealEstate.types.map { |key,value| [t(key),value] }, id: 'real_estate_type' %>
     </div>
     <div class="input-field col s4">
       <%= form.number_field :rooms, min: 1, id: "input-rooms" %>
