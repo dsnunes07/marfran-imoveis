@@ -1,10 +1,12 @@
 <div id="<%= image.id %>">
-  <div class="image-container">
-    <div class="image-preview">
-      <%= image_tag(image.variant(resize_to_limit: [300,200])) %>
-    </div>
-    <div class="buttons-container">
-      <input type="button" onclick="deletePhoto(<%= image.id %>)" value="Apagar">
+  <div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag(image.variant(resize_to_limit: [300,200])) %>
+      </div>
+      <div class="card-action">
+        <a href="javascript:void(0)" onclick="deletePhoto(<%= image.id %>)">Apagar</a>
+      </div>
     </div>
   </div>
 </div>
@@ -18,3 +20,4 @@
     document.getElementById('real_estate_deleted_values').value = deleted_images
   }
 </script>
+           
