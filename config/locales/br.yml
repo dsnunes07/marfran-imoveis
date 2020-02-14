@@ -1,0 +1,5 @@
+br:
+  house: 'Casa'
+  apartment: 'Apartamento'
+  commercial: 'Comercial'
+  lot: 'Terreno'
