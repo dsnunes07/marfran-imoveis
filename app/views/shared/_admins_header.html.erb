@@ -1,19 +1,37 @@
-<div id="admins-header">
-  <div id="admins-logo-container">
-    <p>Marfran Imóveis</p>
-  </div>
-  <ul>
-    <li>
-      <%= link_to "Início", admins_path, method: :get %>
-    </li>
-    <li>
-      <%= link_to "Adicionar novo imóvel", new_real_estate_path, method: :get %>
-    </li>
-    <li>
-      <%= link_to "Ver imóveis cadastrados", list_real_estate_path %>
-    </li>
-    <li>
-      <%= link_to "Sair", destroy_admin_session_path, method: :delete	%>
-    </li>
+<nav class="nav-extended black">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo main-logo">Marfran Imóveis</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab">
+          <%= link_to "Início", admins_path, method: :get %>
+        </li>
+        <li class="tab">
+          <%= link_to "Adicionar novo imóvel", new_real_estate_path, method: :get %>
+        </li>
+        <li class="tab">
+          <%= link_to "Ver imóveis cadastrados", list_real_estate_path %>
+        </li>
+        <li class="tab">
+          <%= link_to "Sair", destroy_admin_session_path, method: :delete	%>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li class="tab">
+          <%= link_to "Início", admins_path, method: :get %>
+        </li>
+        <li class="tab">
+          <%= link_to "Adicionar novo imóvel", new_real_estate_path, method: :get %>
+        </li>
+        <li class="tab">
+          <%= link_to "Ver imóveis cadastrados", list_real_estate_path %>
+        </li>
+        <li class="tab">
+          <%= link_to "Sair", destroy_admin_session_path, method: :delete	%>
+        </li>
   </ul>
-</div>
