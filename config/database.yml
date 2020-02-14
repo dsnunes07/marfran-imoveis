@@ -29,7 +29,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: marfran-dev
+  username: marfran
 
   # The password associated with the postgres role (username).
   password: judanel
@@ -58,6 +58,7 @@ development:
 test:
   <<: *default
   database: marfran_test
+  username: marfran
   password: judanel
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -81,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: marfran_production
+  database: marfran
   username: marfran
   password: <%= ENV['MARFRAN_DATABASE_PASSWORD'] %>
