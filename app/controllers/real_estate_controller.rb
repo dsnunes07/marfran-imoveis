@@ -1,7 +1,7 @@
 class RealEstateController < ApplicationController
   layout 'admins'
   def index
-    @real_estates = RealEstate.order(:created_at).page(params[:page])
+    @real_estates = RealEstate.order(:updated_at).page(params[:page])
   end
 
   def new
@@ -13,7 +13,6 @@ class RealEstateController < ApplicationController
   end
 
   def create
-    binding.pry
     address = Address.new(address_params)
     if address.save
       real_estate = RealEstate.new(real_estate_params)
