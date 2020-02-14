@@ -1,7 +1,7 @@
 class RealEstateController < ApplicationController
   layout 'admins'
   def index
-    @real_estates = RealEstate.order(:created_at).page(params[:page])
+    @real_estates = RealEstate.order(:updated_at).page(params[:page])
   end
 
   def new
