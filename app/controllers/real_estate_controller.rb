@@ -13,7 +13,6 @@ class RealEstateController < ApplicationController
   end
 
   def create
-    binding.pry
     address = Address.new(address_params)
     if address.save
       real_estate = RealEstate.new(real_estate_params)
