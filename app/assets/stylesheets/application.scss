@@ -1,0 +1,22 @@
+/*
+*= require material_icons
+*/
+@import "materialize";
+$primary-color: color("materialize-red", "lighten-2") !default;
+$secondary-color: color("gray", "lighten-1") !default;
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.main-logo {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 3%;
+}

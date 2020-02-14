@@ -1,36 +1,103 @@
-<h1>Adicionar imóvel</h1>
+<div class="row">
+  <h3 class="center-align">Adicionar imóvel</h3>
+</div>
 <%= form_with model: @real_estate, url: real_estate_index_path do |form| %>
   <div class="row">
-    <%= form.label :name, 'Nome do imóvel', id: "form-label" %>
+    <div class="input-field col s4">
+      <%= form.text_field :name, id: "real-estate-name", type: 'text' %>
+      <label for="real-estate-name" class="active">Nome do imóvel</label>
+    </div>
+    <div class="input-field col s4">
+      <%= form.select :real_estate_type, RealEstate.types.map { |key,value| [t(key),value] }, id: 'real_estate_type' %>
+    </div>
+    <div class="input-field col s4">
+      <%= form.number_field :rooms, min: 1, id: "input-rooms" %>
+      <label for="input-rooms" class="active">Quantidade de cômodos</label>
+    </div>
   </div>
   <div class="row">
-    <%= form.text_field :name, id: "form-input" %>
+    <div class="input-field col s4">
+      <label>
+        <%= form.check_box :renting, checked: false, id: "for-rent" %>
+        <span>Para alugar?</span>
+      </label>
+    </div>
+    <div class="input-field col s4">
+      <label>
+        <%= form.check_box :selling, checked: false, id: "for-sell" %>
+        <span>Para vender?</span>
+      </label>
+    </div>
+    <div class="input-field col s4">
+      <label>
+        <%= form.check_box :showing, checked: true %>
+        <span>Mostrar imóvel no site?</span>
+      </label>
+    </div>
   </div>
   <div class="row">
-    <%= form.label :real_estate_type, 'Tipo do imóvel', id: "form-label" %>
+    <div class="input-field col s4" id="input-rent">
+      <%= form.text_field :rent_price, id: 'input-rent-price' %>
+      <label for="input-rent-price" class="active">Preço do aluguel</label>
+    </div>
+    <div class="input-field col s4" id="input-sell">
+      <%= form.text_field :sell_price, id: 'input-sell-price' %>
+      <label for="input-sell-price" class="active">Preço de venda</label>
+    </div>
   </div>
   <div class="row">
-    <%= form.select(:real_estate_type, options_for_select(RealEstate.types)) %>
+    <h4>Descrição do imóvel</h4>
   </div>
   <div class="row">
-    <%= form.label :rooms, 'Número de cômodos', id: "form-label" %>
+    <div class="input-field col s12">
+      <%= form.text_area :description, id:'input-real-estate-description', class:"materialize-textarea" %>
+      <label for="input-real-estate-description">Texto descrevendo o imóvel...</label>
+    </div>
   </div>
   <div class="row">
-    <%= form.number_field :rooms, min: 1, id: "form-input" %>
+    <h4>Informações de localização</h4>
   </div>
   <div class="row">
-    <%= form.check_box :showing, checked: true %>
-    <%= form.label :showing, 'Mostrar esse imóvel no site?', id: "form-label" %>
+    <div class="input-field col s4">
+      <%= form.text_field :street, id: "real-estate-address-street", type: 'text' %>
+      <label for="real-estate-address-street" class="active">Nome da rua</label>
+    </div>
+    <div class="input-field col s2">
+      <%= form.text_field :number, id: "real-estate-address-number", type: 'text' %>
+      <label for="real-estate-address-number" class="active">Complemento</label>
+    </div>
+    <div class="input-field col s4">
+      <%= form.text_field :cep, id: "real-estate-address-cep", type: 'text' %>
+      <label for="real-estate-address-cep" class="active">CEP</label>
+    </div>
   </div>
   <div class="row">
-    <%= form.label :images, 'Adicionar fotos', id: "form-label" %>
+    <div class="input-field col s4">
+      <%= form.text_field :city, id: "real-estate-address-city", type: 'text' %>
+      <label for="real-estate-address-city" class="active">Cidade</label>
+    </div>
+    <div class="input-field col s4">
+      <%= form.text_field :state, id: "real-estate-address-state", type: 'text' %>
+      <label for="real-estate-address-state" class="active">Estado</label>
+    </div>
   </div>
-  <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg', onchange: "previewImages(this)" %>
-  <%= form.submit "Salvar" %>
+  <div class="row">
+    <h4>Adicionar imagens</h4>
+  </div>
+  <div class="row">
+    <div class="file-field input-field">
+        <div class="btn">
+          <span>Adicionar...</span>
+          <%= form.file_field :images, 
+                              multiple: true, 
+                              accept: 'image/png,image/jpeg' %>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <%= form.submit "Salvar", class:'btn black text-white' %>
+  </div>
 <% end %>
-
-<script>
-  function previewImages(input) {
-    console.log(input.files);
-  }
-</script>

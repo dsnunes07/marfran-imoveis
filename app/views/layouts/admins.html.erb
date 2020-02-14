@@ -4,14 +4,37 @@
     <title>Marfran</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
     <%= render "shared/admins_header" %>
-    <div id="main-content">
-      <%= yield %>
+    </header>
+    <div class="container">
+      <main>
+        <%= yield %>
+      </main>
     </div>
   </body>
 </html>
+
+<script>
+  $(document).ready(
+    function() {
+    $('select').formSelect();
+    $('#for-rent').change(function () {
+        if (this.checked) 
+           $('#input-rent').show();
+        else 
+            $('#input-rent').hide();
+    });
+    $('#for-sell').change(function () {
+        if (this.checked) 
+           $('#input-sell').show();
+        else 
+            $('#input-sell').hide();
+    });
+  });
+</script>

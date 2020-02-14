@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_175511) do
+ActiveRecord::Schema.define(version: 2020_02_14_151756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_175511) do
     t.boolean "selling", default: false, null: false
     t.boolean "renting", default: false, null: false
     t.bigint "address_id"
+    t.datetime "created_at", default: "2020-02-14 15:18:41", null: false
+    t.datetime "updated_at", default: "2020-02-14 15:18:42", null: false
     t.index ["address_id"], name: "index_real_estates_on_address_id"
   end
 

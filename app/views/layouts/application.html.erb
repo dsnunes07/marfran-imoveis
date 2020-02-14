@@ -4,15 +4,21 @@
     <title>Marfran</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "shared/page_header" %>
-    <div id="page-content">
-      <%= yield %>
-    </div>
-    <%= render "shared/page_footer" %>
+    <header>
+      <%= render "shared/page_header" %>
+    </header>
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <%= render "shared/page_footer" %>
+    </footer>
   </body>
 </html>
