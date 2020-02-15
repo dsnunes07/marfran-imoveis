@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   authenticate :admin do
     resources :admins, only: [:index]
     scope :admins do
-      resources :real_estate, only: [:new, :create, :edit, :update, :destroy]
+      resources :real_estate, only: [:new, :create, :edit, :update, :destroy, :index]
     end
   end
   get 'real_estate/index', to: 'real_estate#index', as: :list_real_estate
