@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   root 'application#index'
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   authenticate :admin do
@@ -7,6 +8,12 @@ Rails.application.routes.draw do
       resources :real_estate, only: [:new, :create, :edit, :update, :destroy, :index]
     end
   end
+  resources :real_estate do
+    collection do
+      match 'search' => 'application#index', via: [:get, :post], as: :search
+    end
+  end
   get 'real_estate/index', to: 'real_estate#index', as: :list_real_estate
   get 'real_estate/:id', to: 'real_estate#show', as: :show_real_estate
+
 end
