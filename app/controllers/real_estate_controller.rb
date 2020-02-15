@@ -32,9 +32,7 @@ class RealEstateController < ApplicationController
     ActiveStorage::Attachment.find(attachments_id_to_delete).map(&:purge)
     Address.update(params[:real_estate][:address_id], address_params)
     RealEstate.update(params[:id], real_estate_params)
-    respond_to do |format|
-      format.js { redirect_to list_real_estate_path }
-    end
+    redirect_to admins_path
   end
 
   def destroy
