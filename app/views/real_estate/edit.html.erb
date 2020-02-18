@@ -3,16 +3,20 @@
 </div>
 <%= form_with model: @real_estate, url: real_estate_path, method: :patch, local: true do |form| %>
   <div class="row">
-    <div class="input-field col s4">
+    <div class="input-field col s3">
       <%= form.text_field :name, id: "real-estate-name", type: 'text' %>
       <label for="real-estate-name" class="active">Nome do imóvel</label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s3">
       <%= form.select :real_estate_type, RealEstate.types.map { |key,value| [t(key),value] }, id: 'real_estate_type' %>
     </div>
-    <div class="input-field col s4">
-      <%= form.number_field :rooms, min: 1, id: "input-rooms" %>
-      <label for="input-rooms" class="active">Quantidade de cômodos</label>
+    <div class="input-field col s3">
+      <%= form.number_field :rooms, min: 0, id: "input-rooms" %>
+      <label for="input-rooms" class="active">Número de cômodos</label>
+    </div>
+    <div class="input-field col s3">
+      <%= form.number_field :bathrooms, min: 0, id: "input-bathrooms" %>
+      <label for="input-bathrooms" class="active">Número de banheiros</label>
     </div>
   </div>
   <div class="row">
