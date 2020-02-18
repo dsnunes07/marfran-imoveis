@@ -1,3 +1,8 @@
+<div class="parallax-container">
+  <div class="parallax">
+    <img src="<%= asset_path('indexbg2.jpg')%>" class="bg-image" />
+  </div>
+</div>
 <div class="section white" id="renting">
   <div class="container">
     <h4>Imóveis para alugar</h4>
@@ -6,7 +11,7 @@
       <% if @renting.any? %>
         <% @renting.each do |real_estate| %>
           <div class="col s4">
-            <%= render partial: "shared/featuring_real_estate_card", locals: {real_estate: real_estate} %>
+            <%= render partial: "shared/featuring_real_estate_card", locals: {real_estate: real_estate, renting: true, selling: false} %>
           </div>
         <% end %>
       <% else %>
