@@ -1,8 +1,10 @@
 <div class="col s4">
   <div class="card hoverable">
-    <div class="card-image waves-effect waves-block waves-light">
-      <%= image_tag real_estate.images.first.variant(resize_to_limit: [300,200]) %>
-    </div>
+    <% if real_estate.images.any? %>
+      <div class="card-image waves-effect waves-block waves-light">
+        <%= image_tag real_estate.images.first.variant(resize_to_limit: [300,200]) %>
+      </div>
+    <% end %>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">
         <%= real_estate.name %>

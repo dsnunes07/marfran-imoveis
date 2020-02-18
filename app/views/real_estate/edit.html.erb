@@ -1,7 +1,7 @@
 <div class="row">
   <h3 class="center-align">Editar imóvel</h3>
 </div>
-<%= form_with model: @real_estate, url: real_estate_path, method: :patch do |form| %>
+<%= form_with model: @real_estate, url: real_estate_path, method: :patch, local: true do |form| %>
   <div class="row">
     <div class="input-field col s4">
       <%= form.text_field :name, id: "real-estate-name", type: 'text' %>
@@ -106,7 +106,7 @@
   </div>
   <div class="row">
     <div class="file-field input-field">
-        <div class="btn">
+        <div class="btn black">
           <span>Adicionar...</span>
           <%= form.file_field :images, 
                               multiple: true, 
@@ -118,7 +118,7 @@
       </div>
   </div>
   <div class="row">
-    <button type="submit" class="btn waves-effect waves-light">
+    <button type="submit" class="btn waves-effect waves-light black">
       Salvar
       <i class="material-icons right">send</i>
     </button>

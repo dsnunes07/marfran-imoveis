@@ -1,0 +1,17 @@
+<div class="section white" id="selling">
+  <div class="container">
+    <h4>Imóveis a venda</h4>
+    <div class="divider"></div>
+    <div class="row">
+      <% if @selling.any? %>
+        <% @selling.each do |real_estate| %>
+          <div class="col s4">
+            <%= render partial: "shared/featuring_real_estate_card", locals: {real_estate: real_estate} %>
+          </div>
+        <% end %>
+      <% else %>
+        Nada a exibir agora!
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -13,23 +13,25 @@ class RealEstateController < ApplicationController
   end
 
   def create
-    address = Address.new(address_params)
-    if address.save
-      real_estate = RealEstate.new(real_estate_params)
-      real_estate.address_id = address.id
-      real_estate.save
+    real_estate = RealEstate.new(real_estate_params)
+    if real_estate.save
+      address = Address.new(address_params)
+      address.real_estate = real_estate
+      address.save
     end
     redirect_to admins_path
   end
 
   def edit
     @real_estate = RealEstate.find(params[:id])
-    @address = Address.find(@real_estate.address_id)
+    @address = @real_estate.address
   end
 
   def update
-    attachments_id_to_delete = params[:real_estate][:deleted_values].split(',').map(&:to_i)
-    ActiveStorage::Attachment.find(attachments_id_to_delete).map(&:purge)
+    if params[:real_estate][:deleted_values]
+      attachments_id_to_delete = params[:real_estate][:deleted_values].split(',').map(&:to_i)
+      ActiveStorage::Attachment.find(attachments_id_to_delete).map(&:purge)
+    end
     Address.update(params[:real_estate][:address_id], address_params)
     RealEstate.update(params[:id], real_estate_params)
     redirect_to admins_path

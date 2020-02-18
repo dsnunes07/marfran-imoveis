@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_14_151756) do
+ActiveRecord::Schema.define(version: 2020_02_15_222550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2020_02_14_151756) do
     t.string "cep"
     t.string "city"
     t.string "state"
+    t.bigint "real_estate_id"
+    t.index ["real_estate_id"], name: "index_addresses_on_real_estate_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -67,8 +69,8 @@ ActiveRecord::Schema.define(version: 2020_02_14_151756) do
     t.boolean "selling", default: false, null: false
     t.boolean "renting", default: false, null: false
     t.bigint "address_id"
-    t.datetime "created_at", default: "2020-02-14 20:48:12", null: false
-    t.datetime "updated_at", default: "2020-02-14 20:48:12", null: false
+    t.datetime "created_at", default: "2020-02-14 15:18:41", null: false
+    t.datetime "updated_at", default: "2020-02-14 15:18:42", null: false
     t.index ["address_id"], name: "index_real_estates_on_address_id"
   end
 

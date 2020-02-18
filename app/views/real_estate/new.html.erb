@@ -1,7 +1,7 @@
 <div class="row">
   <h3 class="center-align">Adicionar imóvel</h3>
 </div>
-<%= form_with model: @real_estate, url: real_estate_index_path do |form| %>
+<%= form_with model: @real_estate, url: real_estate_index_path, local: true do |form| %>
   <div class="row">
     <div class="input-field col s4">
       <%= form.text_field :name, id: "real-estate-name", type: 'text' %>
@@ -86,7 +86,7 @@
   </div>
   <div class="row">
     <div class="file-field input-field">
-        <div class="btn">
+        <div class="btn black">
           <span>Adicionar...</span>
           <%= form.file_field :images, 
                               multiple: true, 
@@ -98,6 +98,9 @@
       </div>
   </div>
   <div class="row">
-    <%= form.submit "Salvar", class:'btn black text-white' %>
+    <button type="submit" class="btn waves-effect waves-light black">
+      Salvar
+      <i class="material-icons right">send</i>
+    </button>
   </div>
 <% end %>

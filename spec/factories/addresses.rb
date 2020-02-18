@@ -9,5 +9,8 @@ FactoryBot.define do
     cep { Faker::Address.zip }
     city { Faker::Address.city_prefix }
     state { Faker::Address.state }
+    after(:create) do |address|
+      address.real_estate ||= FactoryBot.build(:real_estate, address: address)
+    end
   end
 end

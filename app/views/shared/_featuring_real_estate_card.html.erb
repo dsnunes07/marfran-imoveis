@@ -1,0 +1,12 @@
+<div class="card hoverable">
+  <div class="card-image">
+    <% if real_estate.images.any? %>
+      <%= image_tag real_estate.images.first, size: '300x150' %>
+    <% else %>
+      <%= image_tag asset_path('no-photo.png'), size: '300x200' %>
+    <% end %>
+  </div>
+  <div class="card-action">
+    <a href="#">Ver mais</a>
+  </div>
+</div>
