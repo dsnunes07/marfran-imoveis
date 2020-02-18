@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
     split_params
     @q = RealEstate.showing.ransack(params[:q])
     @q.build_grouping unless @q.groupings.any?
-    @renting = RealEstate.renting.sample(6)
-    @selling = RealEstate.selling.sample(6)
+    @renting = RealEstate.showing.renting.sample(6)
+    @selling = RealEstate.showing.selling.sample(6)
     if params[:q]
       @real_estates = @q.result(distinct: true).includes(:address)
       @real_estates = @real_estates.page(params[:page])
