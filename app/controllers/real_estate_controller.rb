@@ -19,7 +19,7 @@ class RealEstateController < ApplicationController
       address.real_estate = real_estate
       address.save
     end
-    redirect_to admins_path
+    redirect_to real_estate_index_path
   end
 
   def edit
@@ -34,7 +34,7 @@ class RealEstateController < ApplicationController
     end
     Address.update(params[:real_estate][:address_id], address_params)
     RealEstate.update(params[:id], real_estate_params)
-    redirect_to admins_path
+    redirect_to real_estate_index_path
   end
 
   def destroy
@@ -43,7 +43,7 @@ class RealEstateController < ApplicationController
   end
 
   def real_estate_params
-    params.require(:real_estate).permit(:name, :real_estate_type, :rooms,
+    params.require(:real_estate).permit(:name, :real_estate_type, :rooms, :bathrooms,
                                         :showing, :selling, :renting, :sell_price,
                                         :rent_price, :description, images: [])
   end
