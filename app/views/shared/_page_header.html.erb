@@ -1,4 +1,4 @@
-<nav class="nav-extended black">
+<nav class="nav-extended">
     <div class="nav-wrapper">
       <a href="<%= root_path %>" class="brand-logo main-logo">
         Marfran Imóveis
@@ -17,6 +17,9 @@
           <a href="#selling">Comprar</a>
         </li>
         <li class="tab">
+          <a href="#laws">Jurídico</a>
+        </li>
+        <li class="tab">
           <a href="#">Contato</a>
         </li>
       </ul>
@@ -24,8 +27,9 @@
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="#">Início</a></li>
-    <li><a href="#">Alugar</a></li>
-    <li><a href="#">Comprar</a></li>
+    <li><a href="<%= root_path %>">Início</a></li>
+    <li><a href="#renting">Alugar</a></li>
+    <li><a href="#selling">Comprar</a></li>
+    <li><a href="#laws">Jurídico</a></li>
     <li><a href="#">Contato</a></li>
   </ul>
