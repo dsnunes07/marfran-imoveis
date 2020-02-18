@@ -12,30 +12,34 @@
         </div>
       <%= form.grouping_fields do |g| %>
         <%= g.hidden_field :m, value: 'or' %>
-        <div class="input-field col s3">
+        <div class="input-field col s2">
           <%= g.select :real_estate_type_eq, RealEstate.types.map { |key,value| [t(key),value] }, id: 'real_estate_type', include_blank: 'Tipo do imóvel' %>
         </div>
-        <div class="input-field col s4">
-          <%= form.number_field :rooms_eq, min: 1, id: "input-rooms" %>
+        <div class="input-field col s3">
+          <%= form.number_field :rooms_eq, min: 0, id: "input-rooms" %>
           <label for="input-rooms" class="active">Quantidade de cômodos</label>
+        </div>
+        <div class="input-field col s3">
+          <%= form.number_field :bathrooms_eq, min: 0, id: "input-bathrooms" %>
+          <label for="input-bathrooms" class="active">Quantidade de banheiros</label>
         </div>
       </div>
       <div class="row">
         <%= g.hidden_field :m, value: 'or' %>
           <div class="input-field col s3">
             <label>
-              <%= g.check_box :renting_true, checked: false, id: 'search-rent' %>
+              <%= g.check_box :renting_true, checked: true, id: 'search-rent' %>
               <span>Quero alugar</span>
             </label>
           </div>
           <div class="input-field col s3">
             <label>
-              <%= g.check_box :selling_true, checked: false, unchecked_value: '', id: 'search-sell' %>
+              <%= g.check_box :selling_true, checked: true, unchecked_value: '', id: 'search-sell' %>
               <span>Quero comprar</span>
             </label>
           </div>
         <% end %>
-        <div class="input-field col s5">
+        <div class="input-field col s6">
           <%= form.search_field :address_street_or_address_number_or_address_cep_or_address_city_or_address_state_cont_any, id: "address-search" %>
           <label for="address-search" >Localização</label>
         </div>
@@ -43,19 +47,11 @@
       <div class="row">
         <div class="col s3" id="renting-prices">
           <div class="input-field s3">
-            <%= form.search_field :rent_price_gteq, id: 'rent-min-price' %>
-            <label for="rent-min-price">Preço mínimo do aluguel</label>
-          </div>
-          <div class="input-field s3">
             <%= form.search_field :rent_price_lteq, id: 'rent-max-price' %>
             <label for="rent-max-price">Preço máximo do aluguel</label>
           </div>
         </div>
         <div class="col s3" id="selling-prices">
-          <div class="input-field s3">
-            <%= form.search_field :sell_price_gteq, id: 'sell-min-price' %>
-            <label for="sell-min-price">Preço mínimo do imóvel</label>
-          </div>
           <div class="input-field s3">
             <%= form.search_field :sell_price_lteq, id: 'sell-max-price' %>
             <label for="sell-max-price">Preço máximo do imóvel</label>
@@ -63,7 +59,7 @@
         </div>
       </div>
       <div class="row">
-        <button type="submit" class="btn waves-effect waves-light black right-align">
+        <button type="submit" class="btn waves-effect waves-light right-align">
           Pesquisar
           <i class="material-icons right">search</i>
         </button>
@@ -72,14 +68,12 @@
   </div>
 </div>
 <script>
-  $('#renting-prices').hide();
   $('#search-rent').change(function () {
     if (this.checked) 
       $('#renting-prices').show();
     else 
       $('#renting-prices').hide();
     });
-  $('#selling-prices').hide();
   $('#search-sell').change(function () {
       if (this.checked) 
           $('#selling-prices').show();
