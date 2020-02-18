@@ -40,11 +40,16 @@ main {
 .real-estate-card .card-content {
   padding-top: 1%;
 }
-.real-estate-name {
-  font-size: 17pt;
+
+.real-estate-card-search .card-content {
+  padding: 0;
 }
 
-
+.real-estate-name {
+  font-size: 17pt;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
 
 .real-estate-price {
   margin-bottom: 0;
@@ -63,4 +68,14 @@ main {
 
 .real-estate-card .card-actions {
   color: #575858
+}
+
+.real-estate-price {
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.price-text {
+  font-size: 11pt;
+  color: #2a2a2a;
 }
