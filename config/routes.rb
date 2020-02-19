@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   end
   get 'real_estate/index', to: 'real_estate#index', as: :list_real_estate
   get 'real_estate/:id', to: 'real_estate#show', as: :show_real_estate
+  get 'contato', to: 'application#contact', as: :contact
 
 end
