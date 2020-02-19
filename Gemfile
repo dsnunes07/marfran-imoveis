@@ -64,4 +64,6 @@ gem 'jquery_mask_rails', '~> 0.1.0'
 gem 'kaminari'
 gem 'material_icons'
 gem 'materialize-sass'
+gem "mini_magick"
 gem 'pry', '~> 0.12.2'
+gem 'ransack'

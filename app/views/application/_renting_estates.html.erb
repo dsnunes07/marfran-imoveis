@@ -1,0 +1,27 @@
+<div class="parallax-container">
+  <div class="parallax">
+    <img src="<%= asset_path('indexbg2.jpg')%>" class="bg-image" />
+  </div>
+</div>
+<div class="section white" id="renting">
+  <div class="container">
+    <div class="row">
+      <h4>Imóveis para alugar</h4>
+    </div>
+    <div class="row">
+      <a href="<%= rent_real_estate_index_path	%>" class="btn waves-effect waves-light black">Ver mais imóveis</a>
+    </div>
+    <div class="divider"></div>
+    <div class="row">
+      <% if @renting.any? %>
+        <% @renting.each do |real_estate| %>
+          <div class="col s4">
+            <%= render partial: "shared/featuring_real_estate_card", locals: {real_estate: real_estate, renting: true, selling: false} %>
+          </div>
+        <% end %>
+      <% else %>
+        Nada a exibir agora!
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Marfran</title>
+    <title>Marfran Imóveis</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application' %>
@@ -13,12 +13,18 @@
       <%= render "shared/page_header" %>
     </header>
     <main>
-      <div class="container">
         <%= yield %>
-      </div>
     </main>
     <footer>
       <%= render "shared/page_footer" %>
     </footer>
   </body>
 </html>
+
+<script>
+  $(document).ready(function(){
+    $('.parallax').parallax();
+    $('select').formSelect();
+  });
+
+</script>

@@ -1,0 +1,71 @@
+<div class="card hoverable real-estate-card-search">
+  <div class="card-image">
+    <% if real_estate.images.any? %>
+      <%= image_tag real_estate.images.first, size: '300x150' %>
+    <% else %>
+      <%= image_tag asset_path('no-photo.png'), size: '300x200' %>
+    <% end %>
+  </div>
+  <div class="card-content">
+    <div class="row center-align">
+      <p class="real-estate-name col s12 truncate">
+      <% unless real_estate.name.blank?%>
+        <%= real_estate.name %>
+      <% end %>
+      </p>
+      <span class="real-estate-rooms">
+        <% if real_estate.rooms %>
+          <p class="col s6 center-align"><%= real_estate.rooms %> cômodos</p>
+        <% end %>
+        <% if real_estate.bathrooms %>
+          <p class="col s6 center-align"><%= real_estate.bathrooms %> banheiros</p>
+        <% end %>
+        <% if real_estate.rooms.blank? && real_estate.bathrooms.blank? %>
+          <p class="col s12 center-align">Sem informações</p>
+        <% end %>
+      </span>
+    </div>
+    <div class="row">
+      <% if real_estate.renting %>
+        <span class="col s12 center-align">
+          <p class="s6 price-text">Aluga-se</p>
+          <p class="s6 real-estate-price center-align">
+            <% if real_estate.rent_price.present? %>
+              <%= number_to_currency(real_estate.rent_price,
+                                  :unit => "R$ ",
+                                  :separator => ",",
+                                  :delimiter => ".") %>
+            <% else %>
+              Preço a combinar
+          <% end %>
+          </p>
+        </span>
+      <% end %>
+      <% if real_estate.selling %>
+        <span class="col s12 center">
+          <p class="s6 price-text">Vende-se</p>
+          <p class="s6 real-estate-price center-align">
+            <% if real_estate.sell_price.present? %>  
+              <%= number_to_currency(real_estate.sell_price,
+                                  :unit => "R$ ",
+                                  :separator => ",",
+                                  :delimiter => ".") %>
+            <% else %>
+              Preço a combinar
+            <% end %>
+          </p>
+        </span>
+      <% end %>
+    </div>
+    <div class="row center-align">
+        <% unless real_estate.address.street.blank? %>
+          <p class="real-estate-address">
+            <%= real_estate.address.street %>, <%= real_estate.address.number %>
+          </p>
+        <% end %>
+    </div>
+  </div>
+  <div class="card-action">
+    <a href="<%= details_real_estate_path(real_estate) %>" >Ver detalhes</a>
+  </div>
+</div>

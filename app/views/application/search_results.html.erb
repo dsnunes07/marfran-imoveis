@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <% if @real_estates.any? %>
+      <div class="section row">
+        <h4>Resultados da pesquisa</h4>
+        <div class="divider"></div>
+      </div>
+      <div class="row">
+        <% @real_estates.each do |real_estate| %>
+          <div class="col s4">
+            <%= render partial: "shared/real_estate_card", locals: {real_estate: real_estate} %>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @real_estates %>
+    <% else %>
+      <div class="row">
+        <h4>Nenhum resultado encontrado para essa pesquisa</h4>
+      </div>
+    <% end %>
+  </div>
+</div>

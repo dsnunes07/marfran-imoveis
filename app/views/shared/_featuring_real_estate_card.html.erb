@@ -1,0 +1,46 @@
+<div class="card medium hoverable real-estate-card">
+  <div class="card-image">
+    <% if real_estate.images.any? %>
+      <%= image_tag real_estate.images.first, size: '300x150' %>
+    <% else %>
+      <%= image_tag asset_path('no-photo.png'), size: '300x200' %>
+    <% end %>
+  </div>
+  <div class="card-content">
+    <div class="row center-align">
+      <p class="real-estate-name col s12">
+        <%= real_estate.name unless real_estate.name.blank? %>
+      </p>
+      <span class="real-estate-rooms">
+        <% if real_estate.rooms %>
+          <p class="col s6 center-align"><%= real_estate.rooms %> cômodos</p>
+        <% end %>
+        <% if real_estate.bathrooms %>
+          <p class="col s6 center-align"><%= real_estate.bathrooms %> banheiros</p>
+        <% end %>
+      </span>
+    </div>
+    <div class="row center-align real-estate-price">
+      <p>
+        <% if renting && real_estate.rent_price.blank? || selling && real_estate.sell_price.blank? %>
+          Preço a combinar
+        <% else %>
+          <%= number_to_currency(renting ? real_estate.rent_price : real_estate.sell_price,
+                                  :unit => "R$ ",
+                                  :separator => ",",
+                                  :delimiter => ".") %>
+        <% end %>
+      </p>
+    </div>
+    <div class="row center-align">
+        <% unless real_estate.address.street.blank? %>
+          <p class="real-estate-address">
+            <%= real_estate.address.street %>, <%= real_estate.address.number %>
+          </p>
+        <% end %>
+    </div>
+  </div>
+  <div class="card-action">
+    <a href="<%= details_real_estate_path(real_estate) %>" >Ver detalhes</a>
+  </div>
+</div>
