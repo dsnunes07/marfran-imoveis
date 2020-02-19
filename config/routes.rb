@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   resources :real_estate do
     collection do
       match 'search' => 'application#index', via: [:get, :post], as: :search
+      get 'rent' => 'application#real_estate_for_rent'
+      get 'sell' => 'application#real_estate_for_sell'
+    end
+
+    member do
+      get 'details' => 'application#show_real_estate', as: :details
     end
   end
   get 'real_estate/index', to: 'real_estate#index', as: :list_real_estate
