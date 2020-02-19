@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h4>Alugar</h4>
+  </div>
+  <div class="divider"></div>
+  <div class="row">
+    <% @renting.each do |real_estate| %>
+      <div class="col s4">
+        <%= render partial: "shared/real_estate_card", locals: {real_estate: real_estate} %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= paginate @renting %>
+  </div>
+</div>
