@@ -1,1 +1,96 @@
-<%= @real_estate.name %>
+<div class="container">
+  <div class="row center-align">
+    <h4>
+      <%= @real_estate.name unless @real_estate.name.blank? %>
+    </h4>
+    <br>
+    <div class="divider"></div>
+    <h5>
+      <%= t(RealEstate.types.key(@real_estate.real_estate_type)) unless @real_estate.real_estate_type.blank? %>
+    </h5>
+  </div>
+  <% if @real_estate.images.any? %>
+    <div class="row center-align">
+      <div class="slider">
+        <ul class="slides">
+          <% @real_estate.images.each do |image| %>
+            <li>
+              <%= image_tag image, size: '580x250' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <div class="divider"></div>
+  <div class="row">
+    <div class="col s6 center-align">
+      <h4>Sobre o imóvel</h4>
+      <div class="row">
+        <% if @real_estate.area %>
+          <p>Área: <%= @real_estate.area %> m²</p>
+        <% end %>
+        <% if @real_estate.rooms %>
+          <%= @real_estate.rooms %> cômodos;
+        <% end %>
+        <% if @real_estate.bathrooms %>
+          <%= @real_estate.bathrooms %> banheiros;
+        <% end %>
+      </div>
+      <div class="row">
+        <p><%= @real_estate.description %></p>
+      </div>
+    </div>
+    <div class="col s6 center-align">
+      <h4>Localização</h4>
+        <p><%= @real_estate.address.street %>, <%= @real_estate.address.number %></p>
+        <p><%= @real_estate.address.cep %></p>
+        <p><%= @real_estate.address.city %>, <%= @real_estate.address.state %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6 offset-s3 center-align">
+      <h4>Preço</h4>
+      <% if @real_estate.renting %>
+        <p>
+        Aluguel
+        </p>
+        <span class="real-estate-show-price center-align">
+          <% if @real_estate.rent_price %>
+            <%= number_to_currency(@real_estate.sell_price,
+                                    :unit => "R$ ",
+                                    :separator => ",",
+                                    :delimiter => ".") %>
+          <% else %>
+            A combinar
+          <% end %>
+        </span>
+      <% end %>
+      <% if @real_estate.selling %>
+        <p>
+          Venda
+        </p>
+        <span class="real-estate-show-price center-align">
+            <% if @real_estate.sell_price %>
+              <%= number_to_currency(@real_estate.sell_price,
+                                      :unit => "R$ ",
+                                      :separator => ",",
+                                      :delimiter => ".") %>
+            <% else %>
+              A combinar
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="row center-align">
+    <p>Entre em contato conosco para saber mais informações.</p>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.slider').slider();
+  });
+</script>
