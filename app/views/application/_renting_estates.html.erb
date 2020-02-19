@@ -5,7 +5,12 @@
 </div>
 <div class="section white" id="renting">
   <div class="container">
-    <h4>Imóveis para alugar</h4>
+    <div class="row">
+      <h4>Imóveis para alugar</h4>
+    </div>
+    <div class="row">
+      <a href="<%= rent_real_estate_index_path	%>" class="btn waves-effect waves-light black">Ver mais imóveis</a>
+    </div>
     <div class="divider"></div>
     <div class="row">
       <% if @renting.any? %>
