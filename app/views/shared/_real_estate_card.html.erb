@@ -8,13 +8,9 @@
   </div>
   <div class="card-content">
     <div class="row center-align">
-      <p class="real-estate-name col s12">
+      <p class="real-estate-name col s12 truncate">
       <% unless real_estate.name.blank?%>
-        <% if real_estate.name.length > 18 %>
-          <%= real_estate.name[0..15]%>...
-        <% else %>
-          <%= real_estate.name %>
-        <% end %>
+        <%= real_estate.name %>
       <% end %>
       </p>
       <span class="real-estate-rooms">
@@ -70,6 +66,6 @@
     </div>
   </div>
   <div class="card-action">
-    <a href="#" >Ver detalhes</a>
+    <a href="<%= details_real_estate_path(real_estate) %>" >Ver detalhes</a>
   </div>
 </div>
