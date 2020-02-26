@@ -82,8 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['RDS_DATABASE'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOST'] %>
-  post: 5432
+  database: <%= ENV['MARFRAN_DATABASE'] %>
+  username: marfran
+  password: <%= ENV['MARFRAN_PASSWD'] %>
