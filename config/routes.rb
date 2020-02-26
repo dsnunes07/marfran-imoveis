@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   authenticate :admin do
     resources :admins, only: [:index]
     scope :admins do
-      resources :real_estate, only: [:new, :create, :edit, :update, :destroy, :index]
+      resources :real_estate
     end
   end
-  resources :real_estate do
+
+  resources :real_estate, only: [] do
     collection do
       match 'search' => 'application#index', via: [:get, :post], as: :search
       get 'rent' => 'application#real_estate_for_rent'
