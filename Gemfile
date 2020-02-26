@@ -67,4 +67,3 @@ gem 'materialize-sass'
 gem "mini_magick"
 gem 'pry', '~> 0.12.2'
 gem 'ransack'
-gem 'unicorn'
