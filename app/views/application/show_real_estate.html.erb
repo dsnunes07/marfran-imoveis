@@ -15,7 +15,7 @@
         <ul class="slides">
           <% @real_estate.images.each do |image| %>
             <li>
-              <%= image_tag image, size: '580x250' %>
+              <%= image_tag image, size: '580x250', class: 'materialboxed' %>
             </li>
           <% end %>
         </ul>
@@ -92,5 +92,6 @@
 <script>
   $(document).ready(function(){
     $('.slider').slider();
+    $('.materialboxed').materialbox();
   });
 </script>
